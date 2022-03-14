@@ -1,4 +1,5 @@
 //import Layout from '../components/layout/Layout';
+import { Fragment, useEffect,useState } from 'react';
 import MeetupList from '../components/meetups/MeetupList'
 const DUMMY_MEETUP = [
   {
@@ -19,8 +20,31 @@ const DUMMY_MEETUP = [
   },
 ];
 
-const HomePage =() =>{
-    return <MeetupList meetups={DUMMY_MEETUP} />
+const HomePage =(props) =>{
+//  // const [loading, setloading] = useState(true)
+//   const [loadedMeetups, setLoadedMeetups] = useState([])
+//   useEffect(()=>{
+//     // setTimeout(()=>{
+//     //   setLoadedMeetups(DUMMY_MEETUP)
+//     //   setloading(false)
+//     // },5000)
     
+//     setLoadedMeetups(DUMMY_MEETUP)
+//   },[])
+
+//   // return <Fragment>
+//   //   {loading && (<h1>Loading...</h1>)}
+//   //   <MeetupList meetups={loadedMeetups} />
+//   // </Fragment>
+    return <MeetupList meetups={props.meetups} />
+    
+}
+
+export async function getStaticProps() {
+  return {
+    props:{
+      meetups:DUMMY_MEETUP
+    }
+  }
 }
 export default HomePage;
